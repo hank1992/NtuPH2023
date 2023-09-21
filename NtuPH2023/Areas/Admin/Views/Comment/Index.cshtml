@@ -1,0 +1,46 @@
+﻿@model IEnumerable<NtuPH2023.Models.TblComment>
+
+@{
+    ViewData["Title"] = "連署心聲";
+}
+
+<h1>連署心聲</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HtmlContent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastModifiedUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastModifiedTimestamp)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                    @Html.DisplayFor(modelItem => item.HtmlContent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastModifiedUser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastModifiedTimestamp)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Uid">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.Uid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

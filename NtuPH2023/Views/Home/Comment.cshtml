@@ -1,0 +1,17 @@
+﻿@model IEnumerable<NtuPH2023.Models.TblComment>
+@{
+    ViewData["Title"] = "連署心聲";
+}
+
+<h1>此處匯集表單中關心NtuPH2023的心聲，請學校重視各位的意見！</h1>
+
+<div class="container text-center">
+    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+        @foreach (var comment in Model)
+        {
+            <div class="col">
+                <div class="p-3">@Html.Raw(comment.HtmlContent)</div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿@model NtuPH2023.Models.TblRelatedInfo
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>相關資訊</h4>
+<hr />
+<div class="row">
+    <div class="col">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="HtmlContent" class="form-label"></label>
+                <textarea asp-for="HtmlContent" class="form-control" rows="10"></textarea>
+                <span asp-validation-for="HtmlContent" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(function () {
+            tinymce.init({
+                selector: '#HtmlContent',
+                plugins: 'image',
+            });
+        });
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

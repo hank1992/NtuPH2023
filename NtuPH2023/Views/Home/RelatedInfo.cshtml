@@ -1,0 +1,15 @@
+﻿@model IEnumerable<NtuPH2023.Models.TblRelatedInfo>
+@{
+    ViewData["Title"] = "相關資訊";
+}
+
+<div class="container text-center">
+    <div class="row row-cols-1 row-cols-lg-2 g-2 g-lg-3">
+        @foreach (var comment in Model)
+        {
+            <div class="col">
+                <div class="p-3">@Html.Raw(comment.HtmlContent)</div>
+            </div>
+        }
+    </div>
+</div>

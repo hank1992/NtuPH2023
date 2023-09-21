@@ -1,0 +1,48 @@
+﻿@model NtuPH2023.Models.TblRelatedInfo
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>相關資訊</h4>
+<hr />
+<div class="row">
+    <div class="col">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Uid" />
+            <input type="hidden" asp-for="CreatedUser" />
+            <input type="hidden" asp-for="CreatedTimestamp" />
+            <input type="hidden" asp-for="LastModifiedUser" />
+            <input type="hidden" asp-for="LastModifiedTimestamp" />            
+            <div class="mb-3">
+                <label asp-for="HtmlContent" class="form-label"></label>
+                <input asp-for="HtmlContent" class="form-control" />
+                <span asp-validation-for="HtmlContent" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(function () {
+            tinymce.init({
+                selector: '#HtmlContent',
+                plugins:'image',
+            });
+        });
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
